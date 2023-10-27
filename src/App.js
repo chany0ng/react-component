@@ -19,12 +19,12 @@ function App() {
     });
   };
   return (
-    <div>
+    <>
       {/* props로 함수 전달 */}
       <AddUser onAddUser={addUserHandler} />
       {/* props로 데이터 전달 */}
       <UsersList users={usersList} />
-    </div>
+    </>
   );
 }
 
