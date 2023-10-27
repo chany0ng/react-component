@@ -2,6 +2,7 @@ import { useState } from "react";
 import Card from "../UI/Card";
 import classes from "./AddUser.module.css";
 import Button from "../UI/Button";
+import ErrorModal from "./../UI/ErrorModal";
 const AddUser = (props) => {
   //* state 관리
   const [enteredUsername, setEnteredUsername] = useState("");
@@ -31,26 +32,32 @@ const AddUser = (props) => {
   };
 
   return (
-    // Card는 사용자 정의 컴포넌트 -> css적용할 때 props로 class를 받아줘야 됨
-    <Card className={classes.input}>
-      <form action="" onSubmit={addUserHandler}>
-        <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          value={enteredUsername}
-          id="username"
-          onChange={usernameChangeHandler}
-        />
-        <label htmlFor="age">Age(Years)</label>
-        <input
-          type="number"
-          value={enteredAge}
-          id="age"
-          onChange={ageChangeHandler}
-        />
-        <Button type="submit">Add User</Button>
-      </form>
-    </Card>
+    <div>
+      <ErrorModal
+        title="An error occured!"
+        message="Something went wrong!"
+      ></ErrorModal>
+      {/* Card는 사용자 정의 컴포넌트 -> css적용할 때 props로 class를 받아줘야 됨 */}
+      <Card className={classes.input}>
+        <form action="" onSubmit={addUserHandler}>
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            value={enteredUsername}
+            id="username"
+            onChange={usernameChangeHandler}
+          />
+          <label htmlFor="age">Age(Years)</label>
+          <input
+            type="number"
+            value={enteredAge}
+            id="age"
+            onChange={ageChangeHandler}
+          />
+          <Button type="submit">Add User</Button>
+        </form>
+      </Card>
+    </div>
   );
 };
 
